@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import questions from "@/lib/questions";
 import QuizOption from "@/components/quiz-option/quiz-option";
 import { Progress } from "@/components/ui/progress";
