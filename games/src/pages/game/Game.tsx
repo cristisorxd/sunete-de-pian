@@ -23,7 +23,7 @@ const Game = () => {
         }
         setIsDisabled(false); 
         setSelectedOption(null); 
-      }, 2000);
+      }, 1200);
 
       return () => clearTimeout(timer); 
     }
