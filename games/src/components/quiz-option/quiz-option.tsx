@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface QuizOptionProps {
   option: string;
   onClick: () => void;

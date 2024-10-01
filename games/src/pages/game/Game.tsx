@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import questionsBeginner from "@/lib/questionsBeginner";
 import questionsBeginner from "@/lib/questions-beginner";
 import QuizOption from "@/components/quiz-option/quiz-option";
 import { Progress } from "@/components/ui/progress";
