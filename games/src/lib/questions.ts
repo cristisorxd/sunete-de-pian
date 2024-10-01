@@ -1,9 +1,12 @@
+import doImg from '../assets/do.png'
+
 export default [
     {
       "question": "Care este nota prezentata in imagine?",
       "options": ["Do", "Re", "Mi", "Fa"],
       "correct_answer": "Mi",
-      "points": 10
+      "points": 10,
+      "image": doImg
     },
     {
       "question": "Asculta sunetul si alege nota corecta.",

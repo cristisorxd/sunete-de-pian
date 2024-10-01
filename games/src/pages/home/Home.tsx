@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import kidsSinging from "../../assets/kids-singing.jpg";
 import decorator1 from "../../assets/decorator-1.webp";
 import decorator3 from "../../assets/decorator-3.webp";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   return (
       <div className="flex flex-col gap-6 mt-10 justify-between items-center md:mt-2 lg:flex-row">
         <div>
@@ -29,7 +31,7 @@ function Home() {
             Incearca-l acum si vezi cat de bine te descurci.
           </p>
           <Button
-            onClick={() => console.log("Start")}
+            onClick={() => navigate("/game")}
             size="lg"
             className="mt-4"
           >
