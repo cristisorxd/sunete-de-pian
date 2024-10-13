@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   return (
-      <div className="flex flex-col gap-6 mt-10 justify-between items-center md:mt-2 lg:flex-row">
+      <div className="flex flex-col gap-6 mt-10 justify-between items-center md:mt-2 lg:flex-row lg:justify-around">
         <div>
           <div className="relative">
             <h1 className="text-4xl z-10 md:text-6xl font-bold text-gray-800">
@@ -41,7 +41,7 @@ function Home() {
         <img
           src={kidsSinging}
           alt="Kids Singing"
-          className="rounded-3xl self-center md:h-96 md:w-2/3"
+          className="rounded-3xl self-center md:h-96 md:w-2/3 xl:w-[850px]"
         />
       </div>
   );
