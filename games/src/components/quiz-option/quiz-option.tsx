@@ -6,24 +6,31 @@ interface QuizOptionProps {
   isDisabled: boolean;
 }
 
-const QuizOption = ({ option, onClick, correctAnswer, selectedOption, isDisabled }: QuizOptionProps) => {
+const QuizOption = ({
+  option,
+  onClick,
+  correctAnswer,
+  selectedOption,
+  isDisabled,
+}: QuizOptionProps) => {
   const getBackgroundColor = () => {
-    if (selectedOption === null) return 'bg-orange'; // Default color
-    if (selectedOption === option) {
-      return option === correctAnswer ? 'bg-green' : 'bg-red-500'; // Show green for correct, red for incorrect
-    }
-    return 'bg-orange'; // All other options
+    if (selectedOption === null) return "bg-orange"; // Default color
+    return option === correctAnswer ? "bg-green" : "bg-red-500";
   };
 
   return (
-    <div
-      className={`w-full rounded-xl flex items-center px-4 py-5 cursor-pointer text-white ${getBackgroundColor()} ${
-        isDisabled && selectedOption !== option ? 'opacity-50 cursor-not-allowed' : ''
-      }`}
-      onClick={!isDisabled ? onClick : undefined} // Prevent click if disabled
-    >
-      <span>{option}</span>
-    </div>
+    <>
+      <div
+        className={`w-full rounded-xl flex items-center px-4 py-5 cursor-pointer text-white ${getBackgroundColor()} ${
+          isDisabled && selectedOption !== option
+            ? "opacity-50 cursor-not-allowed"
+            : ""
+        }`}
+        onClick={!isDisabled ? onClick : undefined} // Prevent click if disabled
+      >
+        <span>{option}</span>
+      </div>
+    </>
   );
 };
 

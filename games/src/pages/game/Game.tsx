@@ -3,13 +3,19 @@ import questionsBeginner from "@/lib/questions-beginner";
 import QuizOption from "@/components/quiz-option/quiz-option";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import Hint from "@/components/hint/hint";
 
 const Game = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null); 
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [showHint, setShowHint] = useState(false);
+
+  const toggleHint = () => {
+    setShowHint((prev) => !prev);
+  };
 
   useEffect(() => {
     // Proceed to next question after 2 seconds if an option is selected
@@ -21,23 +27,26 @@ const Game = () => {
         } else {
           setIsFinished(true);
         }
-        setIsDisabled(false); 
-        setSelectedOption(null); 
+        setIsDisabled(false);
+        setSelectedOption(null);
       }, 1200);
 
-      return () => clearTimeout(timer); 
+      return () => clearTimeout(timer);
     }
   }, [selectedOption, currentQuestion, questionsBeginner.length]);
 
   const handleAnswer = (selectedOption: string) => {
-    setSelectedOption(selectedOption); 
+    setSelectedOption(selectedOption);
     setIsDisabled(true);
 
     const correctAnswer = questionsBeginner[currentQuestion].correct_answer;
     const points = questionsBeginner[currentQuestion].points;
 
     if (selectedOption === correctAnswer) {
-      setScore((prevScore) => prevScore + points); 
+      setScore((prevScore) => prevScore + points);
+    }
+    if (showHint) {
+      toggleHint();
     }
   };
 
@@ -45,18 +54,27 @@ const Game = () => {
     <div className="flex flex-col mb-10 md:px-16 lg:px-32">
       {isFinished ? (
         <div className="flex flex-col justify-center items-center">
-          <h1 className="text-2xl text-amber-900 mb-5">Felicitari! Ai terminat jocul.</h1>
-          <h2 className="text-lg text-amber-900 mb-5">Scorul tau este: {score} / 100</h2>
-          <Button onClick={() => window.location.reload()} size="lg">Joaca din nou</Button>
+          <h1 className="text-2xl text-amber-900 mb-5">
+            Felicitari! Ai terminat jocul.
+          </h1>
+          <h2 className="text-lg text-amber-900 mb-5">
+            Scorul tau este: {score} / 100
+          </h2>
+          <Button onClick={() => window.location.reload()} size="lg">
+            Joaca din nou
+          </Button>
         </div>
       ) : (
         <>
           {currentQuestion + 1} / {questionsBeginner.length}
-          <Progress value={(currentQuestion / questionsBeginner.length) * 100} className="mb-4" />
+          <Progress
+            value={(currentQuestion / questionsBeginner.length) * 100}
+            className="mb-4"
+          />
           {questionsBeginner[currentQuestion].image && (
             <img
               src={questionsBeginner[currentQuestion].image}
-              className="w-96 self-center py-3"
+              className="w-52 self-center py-3 md:w-64"
             />
           )}
           <h1 className="text-2xl text-amber-900 mb-5">
@@ -68,12 +86,23 @@ const Game = () => {
                 key={option}
                 option={option}
                 onClick={() => handleAnswer(option)}
-                correctAnswer={questionsBeginner[currentQuestion].correct_answer}
+                correctAnswer={
+                  questionsBeginner[currentQuestion].correct_answer
+                }
                 selectedOption={selectedOption}
                 isDisabled={isDisabled}
               />
             ))}
           </div>
+          {questionsBeginner[currentQuestion]?.hint && (
+            <div className="self-start mt-5">
+              <Hint
+                hint={questionsBeginner[currentQuestion]?.hint}
+                showHint={showHint}
+                toggleHint={toggleHint}
+              />
+            </div>
+          )}
         </>
       )}
     </div>

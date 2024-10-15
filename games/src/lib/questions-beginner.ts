@@ -1,6 +1,9 @@
 import doImg from "../assets/do.png";
 import cheiaSol from "../assets/cheia-sol.png";
 import siImg from "../assets/si.png";
+import portativSolGol from '../assets/portativ-gol-cheia-sol.png'
+import portativFaGol from '../assets/portativ-gol-cheia-fa.png'
+import { HINT_TYPES } from "./constants";
 
 export default [
   {
@@ -29,18 +32,30 @@ export default [
     options: ["5", "4", "6", "7"],
     correct_answer: "5",
     points: 5,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativSolGol
+    }
   },
   {
     question: "Cate spatii are portativul?",
     options: ["4", "5", "3", "6"],
     correct_answer: "4",
     points: 5,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativSolGol
+    }
   },
   {
     question: "Ce nota sta pe a doua linie din cheia sol?",
     options: ["Do", "Re", "Mi", "Sol"],
     correct_answer: "Sol",
     points: 10,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativSolGol
+    }
   },
   {
     question: "Cum se numeste nota prezentata in imagine?",
@@ -54,6 +69,10 @@ export default [
     options: ["Do", "Sol", "La", "Si"],
     correct_answer: "Sol",
     points: 10,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativFaGol
+    }
   },
   {
     question: "Cati timpi are nota din imagine?",
@@ -67,23 +86,39 @@ export default [
     options: ["Do", "Si", "Re", "Fa"],
     correct_answer: "Si",
     points: 5,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativFaGol
+    }
   },
   {
     question: "Ce nota sta pe linia patru din cheia fa?",
     options: ["Fa", "Do", "La", "Sol"],
     correct_answer: "Fa",
     points: 5,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativFaGol
+    }
   },
   {
     question: "Ce nota sta lipita de linia unu din cheia sol?",
     options: ["Do", "Re", "Mi", "Fa"],
     correct_answer: "Re",
     points: 5,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativSolGol
+    }
   },
   {
     question: "Ce nota sta pe primul spatiu din cheia sol?",
     options: ["Fa", "Mi", "Sol", "La"],
     correct_answer: "Fa",
     points: 5,
+    hint:{
+      type: HINT_TYPES.IMAGE,
+      content: portativSolGol
+    }
   },
 ];
